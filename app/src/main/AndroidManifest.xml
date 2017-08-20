@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.java2kotlinpractice">
+<manifest package="com.example.java2kotlinpractice"
+          xmlns:android="http://schemas.android.com/apk/res/android"
+    >
 
     <application
         android:allowBackup="true"
@@ -8,7 +9,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        >
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,6 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".lesson1.Lesson1Activity" />
+        <activity android:name=".lesson2.Lesson2Activity" />
+        <activity android:name=".lesson3.Lesson3Activity" />
+        <activity android:name=".lesson4.Lesson4Activity" />
+        <activity android:name=".lesson5.Lesson5Activity" />
+        <activity android:name=".lesson6.Lesson6Activity" />
     </application>
 
 </manifest>
