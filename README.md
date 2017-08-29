@@ -13,6 +13,8 @@
 * Branch
   - master branch -> Java
   - kotlin branch -> Kotlinで解答を書いています
+* Kotlinのコード規約は以下に従っています 
+  - https://github.com/openfresh/android-kotlin-style-guide
 
 ## Lesson1
 
