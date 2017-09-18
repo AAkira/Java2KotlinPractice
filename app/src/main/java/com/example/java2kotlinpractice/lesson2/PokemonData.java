@@ -1,5 +1,11 @@
 package com.example.java2kotlinpractice.lesson2;
 
+/**
+ * このclassをdata classに変更してみましょう
+ * https://kotlinlang.org/docs/reference/data-classes.html
+ *
+ * Hint : 物凄く短くなります
+ */
 public class PokemonData {
 
     final private String name;

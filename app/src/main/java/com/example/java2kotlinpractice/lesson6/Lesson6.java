@@ -77,12 +77,18 @@ public class Lesson6 {
         }
     }
 
+    /**
+     * スコープ関数(run, let...)を上手く使うとreturnを消せる
+     */
     private static int calcAttackDamage(Pokemon from, Pokemon to) {
         // 0.85 ~ 1.0
         final float rate = (new Random().nextInt(16) + 85) / 100f;
         return (int) (((from.getLevel() * 2 / 5f + 2) * DAMAGE * from.getAttack() / to.getDefence() / 50f + 2) * rate);
     }
 
+    /**
+     * interfaceの書き方はJavaとあまり変わらない
+     */
     public interface EventListener {
 
         void onAttacked(Pokemon attacker, Pokemon defender, int damage);

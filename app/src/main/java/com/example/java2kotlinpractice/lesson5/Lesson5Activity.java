@@ -16,6 +16,11 @@ import static com.example.java2kotlinpractice.lesson5.Lesson5.gotchaLegend;
  */
 public class Lesson5Activity extends AppCompatActivity {
 
+    /**
+     * (拡張関数とは関係ない)
+     * 必ず値が代入されるならnon-nullにも出来る
+     * lateinitでnon-nullに遅延評価可能 ref) Delegates.notNull(), lazy
+     */
     private TextView textView;
     private TextView textView2;
 
@@ -34,6 +39,7 @@ public class Lesson5Activity extends AppCompatActivity {
         final Pokemon hoOh = new Pokemon("Ho-oh", 106, 130, 90, 90);
         final Pokemon newPokemon = gotcha(hoOh);
 
+        // let, runとelvis演算子を組み合わせてみましょう
         if (newPokemon != null) {
             textView.setText(newPokemon.getName());
         } else {
@@ -44,14 +50,15 @@ public class Lesson5Activity extends AppCompatActivity {
     private void lesson5_2() {
         final Pokemon pokemon = gotchaLegend();
 
-        if(pokemon!= null) {
+        // ポケモンの変数定義は必要無くなる
+        if (pokemon != null) {
             // 努力値をセット
             pokemon.setEffortHp(252);
             pokemon.setEffortAttack(252);
             pokemon.setEffortDefence(4);
             pokemon.setEffortSpeed(0);
             textView2.setText(pokemon.getName());
-        }else {
+        } else {
             textView2.setText("Mistake!");
         }
     }

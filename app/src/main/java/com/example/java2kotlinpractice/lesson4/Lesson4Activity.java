@@ -17,6 +17,7 @@ import static com.example.java2kotlinpractice.lesson4.Lesson4.gotcha;
  */
 public class Lesson4Activity extends AppCompatActivity {
 
+    // Lesson3までとは異なり、プロパティに定義しているのでnullableにする
     private TextView textView;
     private TextView textView2;
 

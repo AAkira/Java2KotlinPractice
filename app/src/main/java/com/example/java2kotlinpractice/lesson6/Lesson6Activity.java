@@ -37,6 +37,8 @@ public class Lesson6Activity extends AppCompatActivity {
     }
 
     private void lesson6_1() {
+        // lambda式で書ける
+        // itに名前を付けないと中のlambda式と名前が衝突するので注意
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

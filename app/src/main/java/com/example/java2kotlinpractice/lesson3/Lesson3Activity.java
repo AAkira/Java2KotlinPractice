@@ -31,6 +31,7 @@ public class Lesson3Activity extends AppCompatActivity {
             fibonacciList.add(fibonacci(i));
         }
 
+        // forEach文等が用意されている
         String result = "";
         for (Long item : fibonacciList) {
             result += item + ",";
@@ -41,6 +42,7 @@ public class Lesson3Activity extends AppCompatActivity {
         final Random random = new Random();
         int randomValue = random.nextInt(8);
 
+        // switchはwhenを使って置き換えてみましょう
         switch (randomValue) {
             case 0:
                 result = "Vaporeon"; // シャワーズ
@@ -70,8 +72,11 @@ public class Lesson3Activity extends AppCompatActivity {
         textView2.setText("Eevee evolves into " + result + "!");
     }
 
-
-    public static long fibonacci(int n) {
+    /**
+     * Extra
+     * 余裕がある人はgenerateSequenceを使って書いてみるとKotlinっぽく書ける (難易度高い)
+     */
+    private static long fibonacci(int n) {
         if (n <= 1) {
             return n;
         } else {

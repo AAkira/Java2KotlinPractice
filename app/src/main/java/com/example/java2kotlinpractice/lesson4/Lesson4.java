@@ -2,8 +2,12 @@ package com.example.java2kotlinpractice.lesson4;
 
 import android.support.annotation.Nullable;
 
-// Lesson5でもgotchaメソッドが使われている
-// => kotlinはTop levelに関数をおける
+/**
+ * Lesson5でもgotchaメソッドが使われている
+ * 自動変換するとobject classになるが、それだと他のclassから参照出来ない
+ *
+ * => kotlinはTop levelに関数をおける
+ */
 public class Lesson4 {
 
     /**
@@ -27,8 +31,10 @@ public class Lesson4 {
     }
 
     /**
-     * @param number マイナスの場合は"Eevee"を返す <= Kotlin変換では引数"number"をnullableにする
-     *               "number"マイナスではなくnullの場合に"Eevee"にを返す
+     * Kotlin変換では引数"number"をnullableにして下さい
+     *
+     * @param number マイナスの場合は"Eevee"を返す
+     *               Kotlin変換後は "number"マイナスではなくnullの場合に"Eevee"にを返す
      * @return 引数が0~7以外の場合はnullを返す
      */
     public static String evolveEevee(int number) {
