@@ -6,34 +6,37 @@ import android.widget.TextView
 import com.example.java2kotlinpractice.R
 import java.util.Random
 
-/**
- * if / when / for / while
- */
 class Lesson3Activity : AppCompatActivity() {
-
-    private lateinit var textView: TextView // lateinitでNon-nullで遅延評価 ref) Delegates.notNull(), lazy
-    private lateinit var textView2: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lesson3)
 
-        textView = findViewById(R.id.textView)
-        textView2 = findViewById(R.id.textView2)
-        lesson3_1()
-        lesson3_2()
-    }
+        val textView = findViewById<TextView>(R.id.textView)
+        val textView2 = findViewById<TextView>(R.id.textView2)
 
-    private fun lesson3_1() {
-        var result = ""
+        ///////////////////////////////////
+
+        // 普通にやった時
+//        // rangeが使える
+//        val fibonacciList = (1..10).map { fibonacci(it) }
+//
+//        // forEach文等が用意されている(変数名前はit)
+//        var result = ""
+//        for (item in fibonacciList) {
+//            result += item.toString() + ","
+//        }
+//        textView.text = result
+
+        // generate使ったパターン
+        var result1 = ""
         fibonacci().take(10).forEach {
-            result += it.toString() + ","
+            result1 += it.toString() + ","
         }
-        textView.text = result
-    }
+        textView.text = result1
 
-    private fun lesson3_2() {
-        val result = when (Random().nextInt(8)) { // switch -> whenに変換可能, そのまま変数に代入可能
+        ///////////////////////////////////
+        val result2 = when (Random().nextInt(8)) { // switch -> whenに変換可能, そのまま変数に代入可能
             0 -> "Vaporeon" // シャワーズ
             1 -> "Jolteon" // サンダース
             2 -> "Flareon" // ブースター
@@ -43,17 +46,13 @@ class Lesson3Activity : AppCompatActivity() {
             6 -> "Glaceon" // グレイシア
             else -> "Sylveon" // ニンフィア
         }
-        textView2.text = "Eevee evolves into $result!"
+        textView2.text = "Eevee evolves into $result2!"
     }
 
-    /**
-     * Kotlinっぽく書いてみる
-     * infinity sequence
-     * 求めたい数分 takeする
-     */
-    private fun fibonacci() = generateSequence(1 to 1) { it.second to it.first + it.second }.map { it.first }
-
-    // 普通に変換
+//    /**
+//     * staticにしたが他クラスからは使用しないのでprivate関数で
+//     * 普通に変換
+//     */
 //    private fun fibonacci(n: Int): Long {
 //        return if (n <= 1) {
 //            n.toLong()
@@ -61,78 +60,82 @@ class Lesson3Activity : AppCompatActivity() {
 //            fibonacci(n - 1) + fibonacci(n - 2)
 //        }
 //    }
+
+    /**
+     * Kotlinっぽく書いてみる
+     * infinity sequence
+     * 求めたい数分 takeする
+     */
+    private fun fibonacci() = generateSequence(1 to 1) { it.second to it.first + it.second }.map { it.first }
 }
 
-
-//public class Lesson3Activity extends AppCompatActivity {
-//
-//    private TextView textView;
-//    private TextView textView2;
+//public class Lesson3New extends AppCompatActivity {
 //
 //    @Override
 //    protected void onCreate(@Nullable Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_lesson3);
 //
-//        textView = findViewById(R.id.textView);
-//        textView2 = findViewById(R.id.textView2);
-//        lesson3_1();
-//        lesson3_2();
-//    }
+//        TextView textView = findViewById(R.id.textView);
+//        TextView textView2 = findViewById(R.id.textView2);
 //
-//    private void lesson3_1() {
+//        ///////////////////////////////////
 //        final List<Long> fibonacciList = new ArrayList<>();
 //
 //        for (int i = 1; i <= 10; i++) {
 //            fibonacciList.add(fibonacci(i));
 //        }
 //
+//        // forEach文等が用意されている
 //        String result = "";
 //        for (Long item : fibonacciList) {
 //            result += item + ",";
 //        }
 //        textView.setText(result);
+//
+//        ///////////////////////////////////
+//        final Random random = new Random();
+//        int randomValue = random.nextInt(8);
+//
+//        // switchはwhenを使って置き換えてみましょう
+//        switch (randomValue) {
+//            case 0:
+//                result = "Vaporeon"; // シャワーズ
+//                break;
+//            case 1:
+//                result = "Jolteon"; // サンダース
+//                break;
+//            case 2:
+//                result = "Flareon"; // ブースター
+//                break;
+//            case 3:
+//                result = "Espeon"; // エーフィ
+//                break;
+//            case 4:
+//                result = "Umbreon"; // ブラッキー
+//                break;
+//            case 5:
+//                result = "Leafeon"; // リーフィア
+//                break;
+//            case 6:
+//                result = "Glaceon"; // グレイシア
+//                break;
+//            default:
+//                result = "Sylveon"; // ニンフィア
+//                break;
+//        }
+//        textView2.setText("Eevee evolves into " + result + "!");
 //    }
 //
-//    public static long fibonacci(int n) {
+//    /**
+//     * Extra
+//     * 余裕がある人はgenerateSequenceを使って書いてみるとKotlinっぽく書ける (難易度高い)
+//     */
+//    private static long fibonacci(int n) {
 //        if (n <= 1) {
 //            return n;
 //        } else {
 //            return fibonacci(n - 1) + fibonacci(n - 2);
 //        }
-//    }
-//
-//    private void lesson3_2() {
-//        final Random random = new Random();
-//        int randomValue = random.nextInt(8);
-//
-//        String result = "Eevee"; // イーブイ
-//        switch (randomValue) {
-//            case 0:
-//            result = "Vaporeon"; // シャワーズ
-//            break;
-//            case 1:
-//            result = "Jolteon"; // サンダース
-//            break;
-//            case 2:
-//            result = "Flareon"; // ブースター
-//            break;
-//            case 3:
-//            result = "Espeon"; // エーフィ
-//            break;
-//            case 4:
-//            result = "Umbreon"; // ブラッキー
-//            break;
-//            case 5:
-//            result = "Leafeon"; // リーフィア
-//            break;
-//            case 6:
-//            result = "Glaceon"; // グレイシア
-//            break;
-//            default:
-//            result = "Sylveon"; // ニンフィア
-//            break;
-//        }
-//        textView2.setText("Eevee evolves into " + result + "!");
 //    }
 //}
